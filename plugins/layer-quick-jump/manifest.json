@@ -1,0 +1,38 @@
+{
+  "manifestVersion": 5,
+  "id": "com.makienn.photoshop.layer-quick-jump",
+  "name": "Layer Quick Jump",
+  "version": "0.1.0",
+  "main": "index.html",
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "25.0.0"
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "layerQuickJump",
+      "label": {
+        "default": "Layer Quick Jump"
+      },
+      "minimumSize": {
+        "width": 300,
+        "height": 260
+      },
+      "maximumSize": {
+        "width": 520,
+        "height": 640
+      },
+      "preferredDockedSize": {
+        "width": 340,
+        "height": 360
+      },
+      "preferredFloatingSize": {
+        "width": 380,
+        "height": 380
+      }
+    }
+  ]
+}

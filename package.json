@@ -1,11 +1,13 @@
 {
   "name": "photoshop-plugins",
   "version": "0.1.0",
-  "description": "A public collection of Photoshop UXP plugins and small creative tooling experiments.",
+  "description": "A personal Photoshop / UXP plugin toolkit for ACG and game-art workflows.",
   "private": false,
   "type": "module",
   "scripts": {
-    "lint": "node scripts/validate-manifests.mjs"
+    "lint": "node scripts/validate-manifests.mjs",
+    "package:plugin": "node scripts/package-plugin.mjs",
+    "package:layer-quick-jump": "node scripts/package-plugin.mjs layer-quick-jump"
   },
   "keywords": [
     "photoshop",
@@ -13,5 +15,5 @@
     "plugin",
     "creative-tools"
   ],
-  "license": "MIT"
+  "license": "Apache-2.0"
 }

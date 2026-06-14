@@ -9,7 +9,8 @@
 
 ## Publishing Checklist
 
-- The plugin folder has its own README.
+- The plugin folder has its own README and usage notes.
 - `manifest.json` has a stable `id`, `name`, and `version`.
+- Build a `.ccx` artifact when preparing a release.
 - No private files, API keys, PSD/PSB files, or local-only paths are committed.
 - The plugin has been loaded successfully in UXP Developer Tool.

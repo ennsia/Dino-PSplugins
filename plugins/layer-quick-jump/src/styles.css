@@ -1,0 +1,142 @@
+:root {
+  color-scheme: dark;
+  --background: #202124;
+  --surface: #2a2d33;
+  --surface-strong: #343842;
+  --text: #f3f4f5;
+  --muted: #b7bdc7;
+  --line: #4b515d;
+  --accent: #74d7bd;
+  --accent-strong: #1c6d62;
+  --warning: #f0bd5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.panel {
+  display: grid;
+  gap: 14px;
+  min-width: 300px;
+  padding: 16px;
+}
+
+header {
+  display: grid;
+  gap: 5px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.records {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.record {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 74px;
+  padding: 11px;
+  border-bottom: 1px solid var(--line);
+}
+
+.record:last-child {
+  border-bottom: 0;
+}
+
+.record-info {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.record-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+strong,
+small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+strong {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.record-actions {
+  display: grid;
+  grid-template-columns: 54px 54px;
+  gap: 6px;
+}
+
+button {
+  min-height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-strong);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.jump-button:not(:disabled) {
+  border-color: var(--accent-strong);
+  background: #24534e;
+}
+
+#message {
+  min-height: 34px;
+  color: var(--accent);
+}
+
+#message[data-tone="warn"] {
+  color: var(--warning);
+}
+
+#message[data-tone="success"] {
+  color: var(--accent);
+}

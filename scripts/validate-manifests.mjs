@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -10,9 +10,14 @@ let failures = 0;
 const pluginNames = await readdir(pluginsDir);
 
 for (const pluginName of pluginNames) {
-  const manifestPath = join(pluginsDir, pluginName, "manifest.json");
+  const pluginDir = join(pluginsDir, pluginName);
+  const manifestPath = join(pluginDir, "manifest.json");
 
   try {
+    for (const fileName of ["README.md"]) {
+      await access(join(pluginDir, fileName));
+    }
+
     const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
     const missing = requiredFields.filter((field) => manifest[field] === undefined);
 
@@ -27,6 +32,8 @@ for (const pluginName of pluginNames) {
       console.error(`${pluginName}: host must be a non-empty array`);
       continue;
     }
+
+    await access(join(pluginDir, manifest.main));
 
     console.log(`${pluginName}: manifest ok`);
   } catch (error) {

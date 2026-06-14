@@ -6,6 +6,8 @@ Thanks for helping improve this Photoshop plugin collection.
 
 - Keep each plugin in its own folder under `plugins/`.
 - Include a `manifest.json`, plugin source files, and a plugin-specific `README.md`.
+- Keep plugin installation notes focused on source loading and optional `.ccx` release artifacts.
+- Do not commit generated packages unless they are intentionally part of a reviewed release.
 - Keep generated assets and private Photoshop documents out of Git.
 - Prefer small, reviewable changes.
 - Run `npm run lint` before opening a pull request.
