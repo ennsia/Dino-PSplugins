@@ -1,0 +1,17 @@
+{
+  "name": "photoshop-plugins",
+  "version": "0.1.0",
+  "description": "A public collection of Photoshop UXP plugins and small creative tooling experiments.",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "lint": "node scripts/validate-manifests.mjs"
+  },
+  "keywords": [
+    "photoshop",
+    "uxp",
+    "plugin",
+    "creative-tools"
+  ],
+  "license": "MIT"
+}
