@@ -2,6 +2,13 @@
 
 > Early personal toolkit for Photoshop / UXP workflow experiments.
 > 面向 Photoshop / UXP 工作流实验的个人早期工具集。
+>
+
+<p align="center">
+  <img src="https://psiswordpress.oss-cn-shanghai.aliyuncs.com/dinos%20git%20small.jpg" alt="Dino PS Plugins preview" width="600">
+</p>
+
+
 
 ## 中文说明
 
