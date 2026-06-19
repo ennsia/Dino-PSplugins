@@ -15,6 +15,7 @@ DIST="$REPO/dist/$PLUGIN/$VERSION"
 CCX="$DIST/Eisen-$PLUGIN"_"$HOST.ccx"
 OFFLINE="$DIST/$PLUGIN-v$VERSION-offline.zip"
 RELEASE="$REPO/releases/$PLUGIN/$VERSION"
+INCLUDE_OFFLINE="${DINO_INCLUDE_OFFLINE:-0}"
 
 cd "$REPO"
 
@@ -32,16 +33,21 @@ fi
 "$NODE" scripts/verify-ccx.mjs "$CCX"
 
 test -f "$CCX"
-test -f "$OFFLINE"
 test -f "$DIST/README_TEST_CN.txt"
 
 mkdir -p "$RELEASE"
 cp "$CCX" "$RELEASE/"
-cp "$OFFLINE" "$RELEASE/"
 cp "$DIST/README_TEST_CN.txt" "$RELEASE/"
 
 cd "$RELEASE"
-shasum -a 256 "Eisen-$PLUGIN"_"$HOST.ccx" "$PLUGIN-v$VERSION-offline.zip" > SHA256SUMS.txt
+if [ "$INCLUDE_OFFLINE" = "1" ]; then
+  test -f "$OFFLINE"
+  cp "$OFFLINE" "$RELEASE/"
+  shasum -a 256 "Eisen-$PLUGIN"_"$HOST.ccx" "$PLUGIN-v$VERSION-offline.zip" > SHA256SUMS.txt
+else
+  shasum -a 256 "Eisen-$PLUGIN"_"$HOST.ccx" > SHA256SUMS.txt
+fi
+
 shasum -a 256 -c SHA256SUMS.txt
 
 echo "Release verified: $RELEASE"

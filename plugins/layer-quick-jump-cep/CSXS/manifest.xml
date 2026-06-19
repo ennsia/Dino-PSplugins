@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="7.0" ExtensionBundleId="com.makienn.photoshop.layer-quick-jump-cep" ExtensionBundleVersion="0.1.0" ExtensionBundleName="Layer Quick Jump CEP">
+  <ExtensionList>
+    <Extension Id="com.makienn.photoshop.layer-quick-jump-cep.panel" Version="0.1.0" />
+  </ExtensionList>
+  <ExecutionEnvironment>
+    <HostList>
+      <Host Name="PHSP" Version="[17.0,99.9]" />
+      <Host Name="PHXS" Version="[17.0,99.9]" />
+    </HostList>
+    <LocaleList>
+      <Locale Code="All" />
+    </LocaleList>
+    <RequiredRuntimeList>
+      <RequiredRuntime Name="CSXS" Version="7.0" />
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+  <DispatchInfoList>
+    <Extension Id="com.makienn.photoshop.layer-quick-jump-cep.panel">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <CEFCommandLine>
+            <Parameter>--enable-nodejs</Parameter>
+          </CEFCommandLine>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>true</AutoVisible>
+        </Lifecycle>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>Layer Quick Jump CEP</Menu>
+          <Geometry>
+            <Size>
+              <Width>360</Width>
+              <Height>360</Height>
+            </Size>
+            <MinSize>
+              <Width>300</Width>
+              <Height>260</Height>
+            </MinSize>
+            <MaxSize>
+              <Width>520</Width>
+              <Height>640</Height>
+            </MaxSize>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>

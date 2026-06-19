@@ -12,10 +12,20 @@ const pluginNames = await readdir(pluginsDir);
 for (const pluginName of pluginNames) {
   const pluginDir = join(pluginsDir, pluginName);
   const manifestPath = join(pluginDir, "manifest.json");
+  const cepManifestPath = join(pluginDir, "CSXS", "manifest.xml");
 
   try {
     for (const fileName of ["README.md"]) {
       await access(join(pluginDir, fileName));
+    }
+
+    try {
+      await access(cepManifestPath);
+      await access(join(pluginDir, "index.html"));
+      console.log(`${pluginName}: cep manifest ok`);
+      continue;
+    } catch (error) {
+      // Fall through to UXP manifest validation.
     }
 
     const manifest = JSON.parse(await readFile(manifestPath, "utf8"));

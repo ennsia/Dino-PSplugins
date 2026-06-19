@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dino PS Plugin Release"
+  short_description: "Build, verify, publish, and confirm Photoshop plugin releases"
+  default_prompt: "Use $dino-ps-plugin-release to package, verify, commit, push, and confirm a Dino Photoshop plugin release."

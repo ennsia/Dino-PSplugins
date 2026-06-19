@@ -1,4 +1,0 @@
-interface:
-  display_name: "Eisen PS Plugin Release"
-  short_description: "Build, verify, publish, and confirm Photoshop plugin releases"
-  default_prompt: "Use $eisen-ps-plugin-release to package, verify, commit, push, and confirm an Eisen Photoshop plugin release."
