@@ -1,0 +1,107 @@
+{
+  "manifestVersion": 5,
+  "id": "com.makienn.photoshop.color-layer-batch-merge",
+  "name": "调色图层批量合并",
+  "version": "0.3.0",
+  "main": "index.html",
+  "requiredPermissions": {
+    "localFileSystem": "request"
+  },
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "25.0.0",
+      "data": {
+        "apiVersion": 2
+      }
+    }
+  ],
+  "icons": [
+    {
+      "width": 23,
+      "height": 23,
+      "path": "icons/dark.png",
+      "scale": [
+        1,
+        2
+      ],
+      "theme": [
+        "darkest",
+        "dark",
+        "medium"
+      ]
+    },
+    {
+      "width": 23,
+      "height": 23,
+      "path": "icons/light.png",
+      "scale": [
+        1,
+        2
+      ],
+      "theme": [
+        "lightest",
+        "light"
+      ]
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "colorLayerBatchMerge",
+      "label": {
+        "default": "调色图层批量合并"
+      },
+      "minimumSize": {
+        "width": 260,
+        "height": 360
+      },
+      "maximumSize": {
+        "width": 720,
+        "height": 960
+      },
+      "preferredDockedSize": {
+        "width": 320,
+        "height": 560
+      },
+      "preferredFloatingSize": {
+        "width": 440,
+        "height": 700
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/dark.png",
+          "scale": [
+            1,
+            2
+          ],
+          "theme": [
+            "dark",
+            "darkest"
+          ],
+          "species": [
+            "generic"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/light.png",
+          "scale": [
+            1,
+            2
+          ],
+          "theme": [
+            "lightest",
+            "light"
+          ],
+          "species": [
+            "generic"
+          ]
+        }
+      ]
+    }
+  ]
+}

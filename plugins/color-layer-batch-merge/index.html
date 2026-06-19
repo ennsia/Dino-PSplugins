@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main id="pluginRoot" class="panel">
+      <header class="panel-header">
+        <div>
+          <div class="eyebrow">SAFE DUPLICATE MODE</div>
+          <h1>调色图层批量合并</h1>
+        </div>
+        <div id="safetyBadge" class="safety-badge">原稿不修改</div>
+      </header>
+
+      <p class="description">
+        支持递归处理组中组。实际执行会创建完整副本，逐层合并后自动隐藏副本中的原始调色层。
+      </p>
+
+      <section class="anchor-card">
+        <div class="anchor-heading">
+          <div>
+            <div class="step-label">锚点 1</div>
+            <h2>调色层</h2>
+          </div>
+          <button id="saveSources" class="primary-button" type="button">记忆当前所选</button>
+        </div>
+        <div id="sourceSummary" class="anchor-summary">尚未记录</div>
+        <div id="sourceList" class="layer-list"></div>
+      </section>
+
+      <section class="anchor-card">
+        <div class="anchor-heading">
+          <div>
+            <div class="step-label">锚点 2</div>
+            <h2>目标层 / 图层组</h2>
+          </div>
+          <button id="saveTargets" class="primary-button" type="button">记忆当前所选</button>
+        </div>
+        <div id="targetSummary" class="anchor-summary">尚未记录</div>
+        <div id="targetList" class="layer-list"></div>
+      </section>
+
+      <div class="action-row">
+        <button id="clearAnchors" class="secondary-button" type="button">清除记录</button>
+        <button id="runDryRun" class="run-button" type="button" disabled>生成 Dry Run</button>
+      </div>
+      <button id="executeMerge" class="execute-button" type="button" disabled>
+        在安全副本中实际合并
+      </button>
+
+      <section id="executionApproval" class="approval-card hidden">
+        <h2>确认实际合并</h2>
+        <p>
+          将创建完整文档副本，并只在副本中执行。确认后立即开始，不再弹出其他窗口。
+        </p>
+        <div class="execute-summary">
+          <div id="executeTargetCount">目标：0 层</div>
+          <div id="executeMergeCount">预计合并：0 次</div>
+          <div id="executeLockCount">需要自动解锁：0 层</div>
+        </div>
+        <div id="approvalLockSection" class="hidden">
+          <div class="approval-label">将自动处理以下锁定层：</div>
+          <div id="approvalLockList" class="unlock-list"></div>
+        </div>
+        <div class="dialog-actions">
+          <button id="executeCancel" class="secondary-button" type="button">取消</button>
+          <button id="executeApprove" class="execute-button dialog-execute-button" type="button">
+            批准并立即执行
+          </button>
+        </div>
+      </section>
+
+      <section class="log-card">
+        <div class="log-heading">
+          <h2>执行日志</h2>
+          <div class="log-actions">
+            <button id="exportLog" class="text-button" type="button">导出日志</button>
+            <button id="clearLog" class="text-button" type="button">清空</button>
+          </div>
+        </div>
+        <div id="logOutput" class="log-output" aria-live="polite"></div>
+      </section>
+
+      <div id="message" class="message">请先打开文档并记录两个锚点。</div>
+    </main>
+
+    <script src="src/planner.js"></script>
+    <script src="src/executor.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

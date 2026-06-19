@@ -7,6 +7,7 @@
   "scripts": {
     "lint": "node scripts/validate-manifests.mjs",
     "test:layer-quick-jump": "node tests/layer-quick-jump.test.cjs && node tests/layer-quick-jump-ui.test.cjs",
+    "test:color-layer-batch-merge": "node tests/color-layer-batch-merge.test.cjs && node tests/color-layer-batch-merge-executor.test.cjs",
     "package:plugin": "node scripts/package-plugin.mjs",
     "package:layer-quick-jump": "node scripts/package-plugin.mjs layer-quick-jump",
     "package:layer-quick-jump-cep": "node scripts/package-cep-plugin.mjs layer-quick-jump-cep",

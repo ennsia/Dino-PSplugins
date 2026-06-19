@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 260px;
+  margin: 0;
+  padding: 0;
+  background: #292929;
+  color: #f1f1f1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.panel {
+  width: 100%;
+  padding: 16px;
+}
+
+.panel-header,
+.anchor-heading,
+.log-heading,
+.action-row,
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  margin-top: 2px;
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 13px;
+}
+
+.eyebrow,
+.step-label {
+  color: #76d6bd;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.safety-badge {
+  padding: 4px 7px;
+  border: 1px solid #4d8a79;
+  border-radius: 10px;
+  color: #8ce3cb;
+  font-size: 10px;
+}
+
+.description {
+  margin: 10px 0 12px;
+  color: #bdbdbd;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.anchor-card,
+.log-card {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #505050;
+  border-radius: 6px;
+  background: #353535;
+}
+
+.anchor-summary {
+  margin-top: 8px;
+  color: #aaa;
+  font-size: 11px;
+}
+
+.layer-list {
+  max-height: 96px;
+  margin-top: 5px;
+  overflow-y: auto;
+}
+
+.layer-item,
+.unlock-item {
+  padding: 4px 0;
+  overflow: hidden;
+  color: #e2e2e2;
+  font-size: 11px;
+  line-height: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #484848;
+  color: #f2f2f2;
+  font-size: 11px;
+}
+
+button:hover {
+  background: #555;
+}
+
+button:disabled {
+  opacity: 0.38;
+}
+
+.primary-button {
+  border-color: #587a71;
+}
+
+.run-button {
+  border-color: #3f9e85;
+  background: #266c5a;
+}
+
+.execute-button {
+  width: 100%;
+  margin-bottom: 10px;
+  border-color: #c39443;
+  background: #7b571f;
+}
+
+.execute-button:hover {
+  background: #916826;
+}
+
+.secondary-button {
+  background: #414141;
+}
+
+.text-button {
+  min-height: 22px;
+  padding: 0 5px;
+  border: 0;
+  background: transparent;
+  color: #aaa;
+}
+
+.log-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.action-row {
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.action-row button {
+  flex: 1 1 0;
+}
+
+.log-card {
+  padding-bottom: 8px;
+}
+
+.log-output {
+  height: 220px;
+  margin-top: 8px;
+  padding: 8px;
+  overflow: auto;
+  border: 1px solid #242424;
+  border-radius: 4px;
+  background: #202020;
+  color: #d2d2d2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  line-height: 15px;
+  white-space: pre-wrap;
+}
+
+.log-line[data-tone="success"],
+.message[data-tone="success"] {
+  color: #76d6bd;
+}
+
+.log-line[data-tone="warn"],
+.message[data-tone="warn"] {
+  color: #efbd62;
+}
+
+.log-line[data-tone="error"],
+.message[data-tone="error"] {
+  color: #ff8a80;
+}
+
+.message {
+  min-height: 20px;
+  color: #aaa;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.approval-card {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 1px solid #a77a32;
+  border-radius: 7px;
+  background: #3b352c;
+  color: #f1f1f1;
+}
+
+.approval-card p {
+  margin: 8px 0;
+  color: #c4c4c4;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.approval-label {
+  color: #efbd62;
+  font-size: 11px;
+}
+
+.unlock-list {
+  max-height: 180px;
+  margin: 8px 0 12px;
+  padding: 7px;
+  overflow-y: auto;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #292929;
+}
+
+.execute-summary {
+  margin: 10px 0 12px;
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ddd;
+  font-size: 11px;
+  line-height: 17px;
+}
+
+.dialog-actions {
+  gap: 8px;
+}
+
+.dialog-actions button {
+  flex: 1 1 0;
+}
+
+.dialog-actions .dialog-execute-button {
+  width: auto;
+  margin-bottom: 0;
+}
