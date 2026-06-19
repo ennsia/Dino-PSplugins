@@ -3,10 +3,10 @@ Design and Usage Notes / 设计与使用说明
 
 Status / 状态
 
-Version: 0.1.0 beta
+Version: 0.1.2 beta
 This plugin has not been fully tested in real production files. It should be treated as an experimental personal workflow tool.
 
-版本：0.1.0 beta
+版本：0.1.2 beta
 这个插件还没有在真实项目文件中完整跑测，应当视为实验性的个人流程工具。
 
 

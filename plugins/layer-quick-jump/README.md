@@ -30,8 +30,12 @@ From the repository root:
 npm run package:layer-quick-jump
 ```
 
-This creates a release artifact under `dist/layer-quick-jump/0.1.0/`:
+This creates release support files under `dist/layer-quick-jump/0.1.2/`:
 
-- `layer-quick-jump-v0.1.0.ccx`
+- `Eisen-layer-quick-jump_PS.ccx`
+- `layer-quick-jump-v0.1.2-offline.zip`
+- `生成CCX说明.txt`
+
+The CCX structure is validated by the repository packaging script.
 
 The source files in this plugin folder remain the canonical version for study and modification.

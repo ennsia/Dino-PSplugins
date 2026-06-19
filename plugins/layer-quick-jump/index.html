@@ -3,54 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="src/styles.css" />
-    <script src="src/main.js"></script>
   </head>
   <body>
-    <main class="panel">
-      <header>
-        <h1>图层快速跳转</h1>
-        <p>保存三个常用图层或图层组位置，随时一键返回。</p>
-      </header>
+    <div id="pluginRoot" class="panel">
+      <div class="panel-header">
+        <div class="panel-title">图层快速跳转</div>
+        <div class="panel-description">保存三个常用图层或图层组位置，随时一键返回。</div>
+      </div>
 
-      <section class="records" aria-label="图层跳转记录">
-        <article class="record" data-slot="1">
+      <div class="records">
+        <div class="record" data-slot="1">
           <div class="record-info">
             <span class="record-label">记录 1</span>
-            <strong id="recordName1">未保存</strong>
-            <small id="recordPath1">选择一个图层或图层组后保存</small>
+            <div id="recordName1" class="record-name">未保存</div>
+            <div id="recordPath1" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
             <button id="save1" type="button">保存</button>
             <button id="jump1" class="jump-button" type="button" disabled>跳转</button>
           </div>
-        </article>
+        </div>
 
-        <article class="record" data-slot="2">
+        <div class="record" data-slot="2">
           <div class="record-info">
             <span class="record-label">记录 2</span>
-            <strong id="recordName2">未保存</strong>
-            <small id="recordPath2">选择一个图层或图层组后保存</small>
+            <div id="recordName2" class="record-name">未保存</div>
+            <div id="recordPath2" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
             <button id="save2" type="button">保存</button>
             <button id="jump2" class="jump-button" type="button" disabled>跳转</button>
           </div>
-        </article>
+        </div>
 
-        <article class="record" data-slot="3">
+        <div class="record" data-slot="3">
           <div class="record-info">
             <span class="record-label">记录 3</span>
-            <strong id="recordName3">未保存</strong>
-            <small id="recordPath3">选择一个图层或图层组后保存</small>
+            <div id="recordName3" class="record-name">未保存</div>
+            <div id="recordPath3" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
             <button id="save3" type="button">保存</button>
             <button id="jump3" class="jump-button" type="button" disabled>跳转</button>
           </div>
-        </article>
-      </section>
+        </div>
+      </div>
 
-      <p id="message" role="status">打开文档后，选中图层或图层组并保存记录点。</p>
-    </main>
+      <div id="message" class="message">打开文档后，选中图层或图层组并保存记录点。</div>
+    </div>
+    <script src="src/layer-utils.js"></script>
+    <script src="src/main.js"></script>
   </body>
 </html>

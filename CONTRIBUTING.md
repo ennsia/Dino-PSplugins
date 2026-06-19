@@ -6,7 +6,12 @@ Thanks for helping improve this Photoshop plugin collection.
 
 - Keep each plugin in its own folder under `plugins/`.
 - Include a `manifest.json`, plugin source files, and a plugin-specific `README.md`.
-- Keep plugin installation notes focused on source loading and optional `.ccx` release artifacts.
+- Include a plugin-specific Chinese `INSTALL.md`.
+- Treat the offline `.zip` as the primary release artifact.
+- Treat `.ccx` as an optional Creative Cloud entry, never the only install path.
+- Name CCX artifacts `Eisen-<plugin-name>_<host>.ccx`.
+- Keep installation notes focused on offline-first user installation, with UXP Developer Tool clearly labeled as a developer fallback.
+- Read `docs/install-findings.md` before adding a new installer path.
 - Do not commit generated packages unless they are intentionally part of a reviewed release.
 - Keep generated assets and private Photoshop documents out of Git.
 - Prefer small, reviewable changes.
