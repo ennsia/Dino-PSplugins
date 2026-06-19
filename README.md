@@ -122,16 +122,6 @@ This project aims to turn those repeated actions into lightweight tools:
 
 > Note: `layer-quick-jump` is the first plugin module in the Layer Locator direction and may be reorganized under a cleaner module name later.
 
-### Roadmap
-
-- **Phase 1: Layer Locator**
-  Save and jump to frequently used layers or layer groups in large Photoshop documents.
-
-- **Phase 2: Guarded Manual Cleanup**
-  Build safer cleanup workflows around manual confirmation, non-destructive marks, and before/after review.
-
-- **Phase 3: Stray Stroke Detector**
-  Explore detection and review flows for accidental strokes, isolated marks, tiny artifacts, and cleanup leftovers.
 
 ### Safety And Copyright Boundary
 
