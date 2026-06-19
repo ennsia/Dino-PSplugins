@@ -51,11 +51,11 @@ body {
 
 .record {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
-  min-height: 76px;
-  padding: 10px;
+  min-height: 68px;
+  padding: 8px 9px;
   border-bottom: 1px solid #555;
 }
 
@@ -63,53 +63,44 @@ body {
   border-bottom: 0;
 }
 
-.record-info {
+.record-heading {
   display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: baseline;
   min-width: 0;
-  margin-right: 8px;
+  margin-bottom: 7px;
 }
 
 .record-label {
-  margin-bottom: 3px;
+  flex: 0 0 42px;
+  margin-right: 7px;
   color: #72cdb6;
   font-size: 11px;
   font-weight: 700;
 }
 
-.record-name,
-.record-path {
+.record-name {
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.record-name {
-  margin-bottom: 3px;
   color: #f0f0f0;
   font-size: 13px;
   font-weight: 600;
 }
 
-.record-path {
-  color: #b8b8b8;
-  font-size: 11px;
-}
-
 .record-actions {
   display: flex;
-  flex: 0 0 112px;
   flex-direction: row;
-  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
 }
 
 button {
-  width: 52px;
-  height: 30px;
-  min-width: 52px;
-  min-height: 30px;
-  margin: 0 0 0 4px;
+  height: 26px;
+  min-height: 26px;
+  margin: 0 4px 0 0;
   padding: 0;
   border: 1px solid #686868;
   border-radius: 4px;
@@ -127,9 +118,35 @@ button:disabled {
   opacity: 0.4;
 }
 
+.action-button {
+  flex: 1 1 0;
+  min-width: 42px;
+}
+
 .jump-button:not(:disabled) {
   border-color: #4e9f8c;
   background: #315e55;
+}
+
+.move-button:not(:disabled) {
+  border-color: #837348;
+  background: #5b5135;
+}
+
+.clear-button {
+  flex: 0 0 24px;
+  width: 24px;
+  min-width: 24px;
+  margin-right: 0;
+  color: #c7c7c7;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.clear-button:not(:disabled):hover {
+  border-color: #b36b69;
+  background: #68403f;
+  color: #fff;
 }
 
 .message {

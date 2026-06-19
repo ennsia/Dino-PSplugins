@@ -12,12 +12,34 @@ VERSION="$3"
 HOST="$4"
 NODE="${CODEX_NODE:-node}"
 DIST="$REPO/dist/$PLUGIN/$VERSION"
-CCX="$DIST/Eisen-$PLUGIN"_"$HOST.ccx"
+CCX="$DIST/Dino-$PLUGIN"_"$HOST.ccx"
 OFFLINE="$DIST/$PLUGIN-v$VERSION-offline.zip"
 RELEASE="$REPO/releases/$PLUGIN/$VERSION"
-INCLUDE_OFFLINE="${DINO_INCLUDE_OFFLINE:-0}"
 
 cd "$REPO"
+
+PRIVATE_EMAIL_USER="${DINO_PRIVATE_EMAIL_USER:-}"
+
+if rg -n -i \
+  '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}' \
+  . \
+  --glob '!.git/**' \
+  --glob '!dist/**' \
+  --glob '!releases/**/*.ccx' \
+  --glob '!releases/**/*.zip' |
+  rg -v '@users\.noreply\.github\.com'; then
+  echo "Release blocked: personal email information found."
+  exit 1
+fi
+
+if [ -n "$PRIVATE_EMAIL_USER" ] && rg -n -i --fixed-strings "$PRIVATE_EMAIL_USER" . \
+  --glob '!.git/**' \
+  --glob '!dist/**' \
+  --glob '!releases/**/*.ccx' \
+  --glob '!releases/**/*.zip'; then
+  echo "Release blocked: private email username found."
+  exit 1
+fi
 
 "$NODE" scripts/validate-manifests.mjs
 
@@ -33,20 +55,16 @@ fi
 "$NODE" scripts/verify-ccx.mjs "$CCX"
 
 test -f "$CCX"
+test -f "$OFFLINE"
 test -f "$DIST/README_TEST_CN.txt"
 
 mkdir -p "$RELEASE"
 cp "$CCX" "$RELEASE/"
+cp "$OFFLINE" "$RELEASE/"
 cp "$DIST/README_TEST_CN.txt" "$RELEASE/"
 
 cd "$RELEASE"
-if [ "$INCLUDE_OFFLINE" = "1" ]; then
-  test -f "$OFFLINE"
-  cp "$OFFLINE" "$RELEASE/"
-  shasum -a 256 "Eisen-$PLUGIN"_"$HOST.ccx" "$PLUGIN-v$VERSION-offline.zip" > SHA256SUMS.txt
-else
-  shasum -a 256 "Eisen-$PLUGIN"_"$HOST.ccx" > SHA256SUMS.txt
-fi
+shasum -a 256 "Dino-$PLUGIN"_"$HOST.ccx" "$PLUGIN-v$VERSION-offline.zip" > SHA256SUMS.txt
 
 shasum -a 256 -c SHA256SUMS.txt
 

@@ -7,6 +7,8 @@ Photoshop UXP panel for saving three frequently used layer or layer-group positi
 - Three record slots: `记录 1`, `记录 2`, and `记录 3`.
 - Saves the currently selected layer or layer group into a slot.
 - Jumps back to the saved layer or layer group with one click.
+- Moves the current multi-layer selection directly below a saved anchor.
+- Clears individual records without replacing the other slots.
 - Stores records locally in the plugin panel, so they survive panel reloads.
 - Warns when the active document is not the one used when the record was saved.
 
@@ -30,10 +32,10 @@ From the repository root:
 npm run package:layer-quick-jump
 ```
 
-This creates release support files under `dist/layer-quick-jump/0.1.2/`:
+This creates release support files under `dist/layer-quick-jump/0.2.0/`:
 
-- `Eisen-layer-quick-jump_PS.ccx`
-- `layer-quick-jump-v0.1.2-offline.zip`
+- `Dino-layer-quick-jump_PS.ccx`
+- `layer-quick-jump-v0.2.0-offline.zip`
 - `生成CCX说明.txt`
 
 The CCX structure is validated by the repository packaging script.

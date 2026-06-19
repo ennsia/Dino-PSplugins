@@ -36,6 +36,50 @@
     return null;
   }
 
+  function findLayerObjectById(layers, targetId) {
+    for (const layer of Array.from(layers || [])) {
+      if (Number(layer.id) === Number(targetId)) {
+        return layer;
+      }
+
+      const found = findLayerObjectById(getLayerChildren(layer), targetId);
+      if (found) {
+        return found;
+      }
+    }
+
+    return null;
+  }
+
+  function containsLayerId(layer, targetId) {
+    return Boolean(findLayerObjectById(getLayerChildren(layer), targetId));
+  }
+
+  function sortLayersByDocumentOrder(layers, selectedLayers) {
+    const positions = new Map();
+    let position = 0;
+
+    function visit(layerList) {
+      for (const layer of Array.from(layerList || [])) {
+        positions.set(Number(layer.id), position);
+        position += 1;
+        visit(getLayerChildren(layer));
+      }
+    }
+
+    visit(layers);
+
+    return Array.from(selectedLayers || []).sort(function compareLayers(first, second) {
+      const firstPosition = positions.has(Number(first.id))
+        ? positions.get(Number(first.id))
+        : Number.MAX_SAFE_INTEGER;
+      const secondPosition = positions.has(Number(second.id))
+        ? positions.get(Number(second.id))
+        : Number.MAX_SAFE_INTEGER;
+      return firstPosition - secondPosition;
+    });
+  }
+
   function getDocumentLabel(documentRef) {
     return documentRef && documentRef.title ? documentRef.title : "Untitled";
   }
@@ -72,10 +116,13 @@
 
   const api = {
     createLayerRecord,
+    containsLayerId,
     findLayerById,
+    findLayerObjectById,
     getDocumentId,
     getDocumentLabel,
     getLayerChildren,
+    sortLayersByDocumentOrder,
   };
 
   root.LayerQuickJumpUtils = api;

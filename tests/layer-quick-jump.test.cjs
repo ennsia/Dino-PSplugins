@@ -22,8 +22,11 @@ vm.runInNewContext(source, context, { filename: "layer-utils.js" });
 
 const {
   createLayerRecord,
+  containsLayerId,
   findLayerById,
+  findLayerObjectById,
   getDocumentId,
+  sortLayersByDocumentOrder,
 } = moduleRef.exports;
 
 const nestedLayers = [
@@ -47,8 +50,17 @@ assert.deepEqual(JSON.parse(JSON.stringify(findLayerById(nestedLayers, 30))), {
   path: "角色 / 头部 / 眼睛",
 });
 assert.equal(findLayerById(nestedLayers, 999), null);
+assert.equal(findLayerObjectById(nestedLayers, 30).name, "眼睛");
+assert.equal(containsLayerId(nestedLayers[0], 30), true);
+assert.equal(containsLayerId(nestedLayers[1], 30), false);
 assert.equal(getDocumentId({ id: 12 }), 12);
 assert.equal(getDocumentId({}), null);
+assert.deepEqual(
+  sortLayersByDocumentOrder(nestedLayers, [nestedLayers[1], nestedLayers[0].layers[0]]).map(
+    (layer) => layer.id
+  ),
+  [20, 40]
+);
 
 const record = createLayerRecord(
   {

@@ -8,43 +8,46 @@
     <div id="pluginRoot" class="panel">
       <div class="panel-header">
         <div class="panel-title">图层快速跳转</div>
-        <div class="panel-description">保存三个常用图层或图层组位置，随时一键返回。</div>
+        <div class="panel-description">保存常用图层，一键跳转或把当前所选图层转移到锚点下方。</div>
       </div>
 
       <div class="records">
         <div class="record" data-slot="1">
-          <div class="record-info">
+          <div class="record-heading">
             <span class="record-label">记录 1</span>
             <div id="recordName1" class="record-name">未保存</div>
-            <div id="recordPath1" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
-            <button id="save1" type="button">保存</button>
-            <button id="jump1" class="jump-button" type="button" disabled>跳转</button>
+            <button id="save1" class="action-button" type="button" title="保存当前选中的图层或图层组">保存</button>
+            <button id="jump1" class="action-button jump-button" type="button" title="跳转到记录点" disabled>跳转</button>
+            <button id="move1" class="action-button move-button" type="button" title="把当前选中的图层移动到记录点下方" disabled>转移</button>
+            <button id="clear1" class="clear-button" type="button" title="清除记录 1" aria-label="清除记录 1" disabled>×</button>
           </div>
         </div>
 
         <div class="record" data-slot="2">
-          <div class="record-info">
+          <div class="record-heading">
             <span class="record-label">记录 2</span>
             <div id="recordName2" class="record-name">未保存</div>
-            <div id="recordPath2" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
-            <button id="save2" type="button">保存</button>
-            <button id="jump2" class="jump-button" type="button" disabled>跳转</button>
+            <button id="save2" class="action-button" type="button" title="保存当前选中的图层或图层组">保存</button>
+            <button id="jump2" class="action-button jump-button" type="button" title="跳转到记录点" disabled>跳转</button>
+            <button id="move2" class="action-button move-button" type="button" title="把当前选中的图层移动到记录点下方" disabled>转移</button>
+            <button id="clear2" class="clear-button" type="button" title="清除记录 2" aria-label="清除记录 2" disabled>×</button>
           </div>
         </div>
 
         <div class="record" data-slot="3">
-          <div class="record-info">
+          <div class="record-heading">
             <span class="record-label">记录 3</span>
             <div id="recordName3" class="record-name">未保存</div>
-            <div id="recordPath3" class="record-path">选择一个图层或图层组后保存</div>
           </div>
           <div class="record-actions">
-            <button id="save3" type="button">保存</button>
-            <button id="jump3" class="jump-button" type="button" disabled>跳转</button>
+            <button id="save3" class="action-button" type="button" title="保存当前选中的图层或图层组">保存</button>
+            <button id="jump3" class="action-button jump-button" type="button" title="跳转到记录点" disabled>跳转</button>
+            <button id="move3" class="action-button move-button" type="button" title="把当前选中的图层移动到记录点下方" disabled>转移</button>
+            <button id="clear3" class="clear-button" type="button" title="清除记录 3" aria-label="清除记录 3" disabled>×</button>
           </div>
         </div>
       </div>

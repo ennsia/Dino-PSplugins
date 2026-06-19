@@ -57,24 +57,63 @@
     records.forEach(function renderRecord(record, index) {
       const slot = index + 1;
       const nameEl = document.getElementById("recordName" + slot);
-      const pathEl = document.getElementById("recordPath" + slot);
       const jumpButton = document.getElementById("jump" + slot);
+      const moveButton = document.getElementById("move" + slot);
+      const clearButton = document.getElementById("clear" + slot);
 
-      if (!nameEl || !pathEl || !jumpButton) {
+      if (!nameEl || !jumpButton || !moveButton || !clearButton) {
         return;
       }
 
       if (!record) {
         nameEl.textContent = "未保存";
-        pathEl.textContent = "选择一个图层或图层组后保存";
         jumpButton.disabled = true;
+        moveButton.disabled = true;
+        clearButton.disabled = true;
         return;
       }
 
       nameEl.textContent = record.name;
-      pathEl.textContent = record.documentName + " · " + record.path;
       jumpButton.disabled = false;
+      moveButton.disabled = false;
+      clearButton.disabled = false;
     });
+  }
+
+  function getSlotContext(slot) {
+    const record = records[slot - 1];
+    const activeDocument = getActiveDocument();
+
+    if (!record) {
+      setMessage("记录 " + slot + " 还没有保存。", "warn");
+      return null;
+    }
+
+    if (!activeDocument) {
+      setMessage("请先打开包含该记录点的 Photoshop 文档。", "warn");
+      return null;
+    }
+
+    const activeDocumentId = window.LayerQuickJumpUtils.getDocumentId(activeDocument);
+    if (
+      record.documentId !== null &&
+      activeDocumentId !== null &&
+      record.documentId !== activeDocumentId
+    ) {
+      setMessage("当前文档不是记录 " + slot + " 所在文档：" + record.documentName, "warn");
+      return null;
+    }
+
+    const anchorLayer = window.LayerQuickJumpUtils.findLayerObjectById(
+      activeDocument.layers,
+      record.id
+    );
+    if (!anchorLayer) {
+      setMessage("记录 " + slot + " 对应的图层可能已被删除。", "warn");
+      return null;
+    }
+
+    return { record, activeDocument, anchorLayer };
   }
 
   async function saveSlot(slot) {
@@ -107,34 +146,12 @@
 
   async function jumpToSlot(slot) {
     try {
-      const record = records[slot - 1];
-      const activeDocument = getActiveDocument();
-
-      if (!record) {
-        setMessage("记录 " + slot + " 还没有保存。", "warn");
+      const context = getSlotContext(slot);
+      if (!context) {
         return;
       }
 
-      if (!activeDocument) {
-        setMessage("请先打开包含该记录点的 Photoshop 文档。", "warn");
-        return;
-      }
-
-      const activeDocumentId = window.LayerQuickJumpUtils.getDocumentId(activeDocument);
-      if (
-        record.documentId !== null &&
-        activeDocumentId !== null &&
-        record.documentId !== activeDocumentId
-      ) {
-        setMessage("当前文档不是记录 " + slot + " 所在文档：" + record.documentName, "warn");
-        return;
-      }
-
-      const layer = window.LayerQuickJumpUtils.findLayerById(activeDocument.layers, record.id);
-      if (!layer) {
-        setMessage("记录 " + slot + " 对应的图层可能已被删除或移动到其他文档。", "warn");
-        return;
-      }
+      const { record, anchorLayer } = context;
 
       await photoshopApi.core.executeAsModal(
         async function selectSavedLayer() {
@@ -153,18 +170,91 @@
         { commandName: "跳转到记录 " + slot }
       );
 
-      setMessage("已跳转到记录 " + slot + "：" + layer.name, "success");
+      setMessage("已跳转到记录 " + slot + "：" + anchorLayer.name, "success");
     } catch (error) {
       reportError("跳转失败", error);
     }
+  }
+
+  async function moveSelectionToSlot(slot) {
+    try {
+      const context = getSlotContext(slot);
+      if (!context) {
+        return;
+      }
+
+      const { activeDocument, anchorLayer } = context;
+      const selectedLayers = window.LayerQuickJumpUtils.sortLayersByDocumentOrder(
+        activeDocument.layers,
+        activeDocument.activeLayers || []
+      );
+
+      if (selectedLayers.length === 0) {
+        setMessage("请先选择需要转移的图层或图层组。", "warn");
+        return;
+      }
+
+      const selectionContainsAnchor = selectedLayers.some(function isAnchorOrParent(layer) {
+        return (
+          Number(layer.id) === Number(anchorLayer.id) ||
+          window.LayerQuickJumpUtils.containsLayerId(layer, anchorLayer.id)
+        );
+      });
+
+      if (selectionContainsAnchor) {
+        setMessage("不能转移锚点本身或包含锚点的图层组。", "warn");
+        return;
+      }
+
+      const placement =
+        photoshopApi.constants &&
+        photoshopApi.constants.ElementPlacement &&
+        photoshopApi.constants.ElementPlacement.PLACEAFTER;
+
+      if (!placement) {
+        throw new Error("当前 Photoshop 版本不支持图层转移位置");
+      }
+
+      await photoshopApi.core.executeAsModal(
+        async function moveSelectedLayers() {
+          for (let index = selectedLayers.length - 1; index >= 0; index -= 1) {
+            await selectedLayers[index].move(anchorLayer, placement);
+          }
+        },
+        { commandName: "转移图层到记录 " + slot }
+      );
+
+      setMessage(
+        "已将 " + selectedLayers.length + " 个图层转移到“" + anchorLayer.name + "”下方。",
+        "success"
+      );
+    } catch (error) {
+      reportError("转移失败", error);
+    }
+  }
+
+  function clearSlot(slot) {
+    if (!records[slot - 1]) {
+      return;
+    }
+
+    records[slot - 1] = null;
+    if (!saveRecords()) {
+      return;
+    }
+
+    renderRecords();
+    setMessage("记录 " + slot + " 已清除。", "success");
   }
 
   function bindButtons() {
     for (let slot = 1; slot <= SLOT_COUNT; slot += 1) {
       const saveButton = document.getElementById("save" + slot);
       const jumpButton = document.getElementById("jump" + slot);
+      const moveButton = document.getElementById("move" + slot);
+      const clearButton = document.getElementById("clear" + slot);
 
-      if (!saveButton || !jumpButton) {
+      if (!saveButton || !jumpButton || !moveButton || !clearButton) {
         throw new Error("找不到记录 " + slot + " 的按钮");
       }
 
@@ -173,6 +263,12 @@
       });
       jumpButton.addEventListener("click", function handleJump() {
         jumpToSlot(slot);
+      });
+      moveButton.addEventListener("click", function handleMove() {
+        moveSelectionToSlot(slot);
+      });
+      clearButton.addEventListener("click", function handleClear() {
+        clearSlot(slot);
       });
     }
   }
@@ -195,7 +291,7 @@
       bindButtons();
       renderRecords();
       initialized = true;
-      setMessage("选择图层或图层组，然后保存到任意记录位。", "info");
+      setMessage("保存锚点后，可跳转或把当前所选图层转移到锚点下方。", "info");
       console.log("[Layer Quick Jump] 初始化完成");
     } catch (error) {
       reportError("插件初始化失败", error);

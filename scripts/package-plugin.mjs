@@ -26,7 +26,7 @@ const safeVersion = String(manifest.version || "0.0.0").replace(/[^a-z0-9._-]/gi
 const releaseName = `${pluginName}-v${safeVersion}`;
 const distDir = join(rootDir, "dist", pluginName, safeVersion);
 const packageHost = Array.isArray(manifest.host) ? manifest.host[0] : manifest.host;
-const ccxFileName = `Eisen-${pluginName}_${packageHost.app}.ccx`;
+const ccxFileName = `Dino-${pluginName}_${packageHost.app}.ccx`;
 const ccxPath = join(distDir, ccxFileName);
 const offlinePath = join(distDir, `${releaseName}-offline.zip`);
 const ccxGuidePath = join(distDir, "生成CCX说明.txt");
@@ -104,7 +104,7 @@ function releaseReadmeText() {
 插件用途
 
 这是一个 Photoshop 图层快速跳转插件，可以保存三个常用图层或图层组位置。
-无论当前选中了哪个图层，都可以点击“跳转”快速返回保存的位置。
+可以点击“跳转”快速返回，也可以把当前选中的一批图层转移到锚点下方。
 
 兼容范围
 
@@ -125,14 +125,17 @@ function releaseReadmeText() {
 
 1. 在 Photoshop 图层面板中选中一个图层或图层组。
 2. 在插件的记录 1、记录 2 或记录 3 中点击“保存”。
-3. 切换到其他图层。
-4. 点击对应记录后的“跳转”，即可重新选中保存的图层。
+3. 点击“跳转”，即可重新选中保存的图层。
+4. 选中其他一个或多个图层后点击“转移”，会把它们移动到锚点下方。
+5. 点击小型“×”按钮，可以清除对应记录并重新保存。
 
 测试重点
 
 · 面板能否正常显示三条记录
 · 普通图层和图层组能否保存
 · 嵌套图层组中的图层能否保存和跳转
+· 多选图层能否按原有顺序转移到锚点下方
+· 清除按钮能否独立重置记录
 · 关闭并重新打开面板后，记录是否仍然存在
 · 重启 Photoshop 后，记录是否仍然存在
 · 图层被删除后，插件是否给出提示而不是报错

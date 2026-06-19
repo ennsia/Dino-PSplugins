@@ -9,14 +9,15 @@ Run only the release steps that are actually needed. Do not announce success unt
 
 ## Release Rules
 
-- Name CCX files `Eisen-<plugin-name>_<host>.ccx`.
-- Publish source and a reviewed CCX by default.
-- Include an offline ZIP only when the user explicitly requests it.
+- Name CCX files `Dino-<plugin-name>_<host>.ccx`.
+- Publish source, a reviewed CCX, and the complete offline ZIP.
 - Include relevant test notes and `SHA256SUMS.txt`.
 - Keep reviewed artifacts under `releases/<plugin-name>/<version>/`.
 - Keep generated working files under ignored `dist/`.
 - Never stage unrelated dirty-worktree files.
 - Never upload known broken or superseded packages.
+- Block the release if source, docs, or text artifacts contain a private email username or a non-approved email address.
+- Allow only the repository's configured GitHub `users.noreply.github.com` author address.
 - Obey the repository-local safety rules and obtain confirmation before `git add`, `git commit`, or `git push`.
 
 ## Diagnose Before Publishing
@@ -38,7 +39,7 @@ Run only the release steps that are actually needed. Do not announce success unt
 4. Run `scripts/verify_release.sh <repo> <plugin> <version> <host>`.
 5. Copy only reviewed deliverables into the versioned `releases/` directory.
 6. Regenerate and verify `SHA256SUMS.txt`.
-7. Inspect `git diff --check`, staged diff, untracked files, and sensitive-content risks.
+7. Inspect `git diff --check`, staged diff, untracked files, and sensitive-content risks. Search for private email usernames and email address patterns before staging.
 8. Show the exact staging list and commit message; wait for user confirmation.
 9. Stage only confirmed release files and commit.
 10. Recheck `git status --short --branch`.

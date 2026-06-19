@@ -2,9 +2,9 @@
 
 ## 推荐安装：CCX
 
-1. 解压 `layer-quick-jump-v0.1.2-offline.zip`。
+1. 解压 `layer-quick-jump-v0.2.0-offline.zip`。
 2. 退出 Photoshop。
-3. 双击 `INSTALL_CCX.command`，或直接双击包内的 `Eisen-layer-quick-jump_PS.ccx`。
+3. 双击 `INSTALL_CCX.command`，或直接双击包内的 `Dino-layer-quick-jump_PS.ccx`。
 4. 在 Adobe 安装窗口中确认。
 5. 重新打开 Photoshop，在 Plugins 菜单里打开 Layer Quick Jump。
 
@@ -14,7 +14,7 @@
 
 普通用户不优先使用这个方式，因为 UXP Developer Tool 自身可能要求 Creative Cloud 登录或邮箱验证。
 
-1. 解压 `layer-quick-jump-v0.1.2-offline.zip`。
+1. 解压 `layer-quick-jump-v0.2.0-offline.zip`。
 2. 打开 Adobe UXP Developer Tool。
 3. 点击 Add Plugin。
 4. 选择解压出来的 `layer-quick-jump` 文件夹。

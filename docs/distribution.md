@@ -21,13 +21,13 @@ Do not create CCX files by renaming or manually zipping a plugin folder.
 All CCX release filenames use this project-wide convention:
 
 ```text
-Eisen-<plugin-name>_<host>.ccx
+Dino-<plugin-name>_<host>.ccx
 ```
 
 Example:
 
 ```text
-Eisen-layer-quick-jump_PS.ccx
+Dino-layer-quick-jump_PS.ccx
 ```
 
 Creative Cloud Desktop validates CCX package structure. Manually compressed `.ccx` files can fail with install error code `-4`.
@@ -80,7 +80,7 @@ dist/<plugin-name>/<version>/
 
 The script creates:
 
-- `Eisen-<plugin-name>_PS.ccx`
+- `Dino-<plugin-name>_PS.ccx`
 - `<plugin-name>-v<version>-offline.zip`
 - `生成CCX说明.txt`
 
