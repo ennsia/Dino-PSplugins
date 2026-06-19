@@ -89,17 +89,19 @@ This repository is also my personal testing ground. Plugins here are not guarant
 
 The project is currently an **early personal toolkit / work in progress**. Plugins will start small, stay practical, and evolve through testing in real drawing and asset-preparation workflows.
 
+
 ### Project Origin
 
-The original motivation for creating this repository and beginning to explore AI-assisted development came from a Weibo post published by my close friend 世怪螺像 in August 2025. The following is an excerpt:
+The original motivation for creating this repository and taking my first steps into AI development came from a Weibo post published by my close friend 世怪螺像 in August 2025. The following is an excerpt:
 
-> "I have attended many AI and tech events, and at nearly every one, the speakers emphasize that we are not trying to replace people, but to help them. Yet this conflicts with what most people plainly perceive: we are, in very real terms, being replaced. So I began to think that perhaps both things can be true. We may be replaced, but we can still make a greater effort to help more people through difficult times, and bring technology into our lives in a more human-centered way."
+> I have attended many AI and Tech events, and almost every time, the speakers emphasize that we are not trying to replace people, but to help them. Yet this does not match most people's plain understanding of what is happening: we are, in a very concrete and tangible sense, being replaced. So I began to think that perhaps things are not so simple. We may be replaced; nevertheless, we can still make greater efforts to help more people get through difficult times together, and bring technology into our lives in a more human-centered way.
 
-In my own experience, I have also felt that the monopolization of technical language is encroaching on the legitimate rights and interests of creative workers. This is where the project began.
+In my own experience, I have also come to feel that the monopolization of technical language is encircling and eroding the legitimate rights and interests of creative workers. This is where I began this project.
 
-The form of technological development I hope for should reduce the pain of meaningless labor in the creative process, while helping us avoid being priced and defined in inappropriate ways by people who do not understand our work. This repository is my starting point for understanding and gaining command of technology, and I hope some of its results can genuinely make creation easier.
+The form of technological development I hope for is one that reduces the pain people suffer from meaningless labor in the creative process, while also helping us avoid being priced and defined in inappropriate ways by those who do not understand our work. This is my starting point for understanding and gaining command of technology, and I hope that some of its results can truly make creation easier.
 
 **Creating should not be something we simply have to endure.**
+
 
 ### Why This Exists
 
