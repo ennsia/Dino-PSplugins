@@ -46,19 +46,21 @@ Run only the release steps that are actually needed. Do not announce success unt
 11. If `HEAD` is not ahead of upstream, do not push.
 12. Show the branch and commit to be pushed; wait for user confirmation.
 13. Fetch once before pushing when network access permits. If the remote moved, stop and report before integrating.
-14. Push once.
-15. Verify:
+14. Before the real push, run a read-only connectivity check such as `git -c http.version=HTTP/1.1 ls-remote origin HEAD`, then `git -c http.version=HTTP/1.1 push --dry-run origin <branch>`.
+15. If the connectivity check and dry run pass, push once with `git -c http.version=HTTP/1.1 push origin <branch>`.
+16. Verify:
     - `git rev-parse HEAD`
     - `git ls-remote origin refs/heads/<branch>`
     - hashes must match exactly.
-16. Only after the hashes match, run `scripts/notify_success.sh "<plugin> <version>"`.
-17. Report the commit hash, branch, remote URL, and release artifact paths.
+17. Only after the hashes match, run `scripts/notify_success.sh "<plugin> <version>"`.
+18. Report the commit hash, branch, remote URL, and release artifact paths.
 
 ## Failure Handling
 
 - If tests, packaging, checksums, commit, push, or remote verification fail, do not notify success.
-- If network or DNS access is restricted, make at most one narrow push/escalation attempt. Do not loop.
-- If the same command or failure occurs twice, stop and report the blocker.
+- If GitHub connectivity is flaky, first try one narrow read-only probe and one `git push --dry-run`; if both pass, proceed to the real push once.
+- If the read-only probe or dry run fails with network/DNS/TLS timeout symptoms such as `curl 56`, `Operation timed out`, or `Couldn't connect to server`, stop and give the user one ready-to-run manual command, normally `git -c http.version=HTTP/1.1 push origin <branch>`.
+- If the same command or failure occurs twice, stop and report the blocker; do not loop.
 - If authentication fails, preserve the local commit and report the exact next required action.
 - Never ask the user to send a password, token, or verification code. Ask them to run `gh auth login` manually when GitHub authentication is needed.
 - If GitHub CLI is unavailable, use standard Git; releases tracked in the repository do not require `gh`.
