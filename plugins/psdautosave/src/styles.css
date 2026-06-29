@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 240px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #292929;
+  color: #f1f1f1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.panel {
+  width: 100%;
+  max-height: 100vh;
+  padding: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.panel-header,
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-heading h2 {
+  flex: 0 0 auto;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  margin-top: 1px;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 11px;
+}
+
+.eyebrow {
+  color: #76d6bd;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.header-status {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  text-align: right;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid #666;
+  border-radius: 10px;
+  color: #cfcfcf;
+  font-size: 9px;
+}
+
+.status-badge[data-enabled="true"] {
+  border-color: #4d8a79;
+  color: #8ce3cb;
+}
+
+.runtime-pill {
+  margin-top: 3px;
+  color: #8ce3cb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px;
+  line-height: 11px;
+}
+
+.runtime-pill[data-tone="info"] {
+  color: #aaa;
+}
+
+.section {
+  margin-top: 5px;
+  padding: 6px;
+  border: 1px solid #505050;
+  border-radius: 5px;
+  background: #353535;
+}
+
+.path-text,
+.meta-text,
+.message {
+  color: #aaa;
+  font-size: 9px;
+  line-height: 12px;
+}
+
+.path-text {
+  min-height: 13px;
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta-text {
+  margin-top: 4px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  min-height: 20px;
+  padding: 0 6px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #484848;
+  color: #f2f2f2;
+  font-size: 9px;
+  line-height: 12px;
+}
+
+.section-heading button {
+  flex: 1 1 auto;
+  width: auto;
+  margin-left: 8px;
+}
+
+button:hover {
+  background: #555;
+}
+
+button:disabled {
+  opacity: 0.38;
+}
+
+.primary-button {
+  border-color: #3f9e85;
+  background: #266c5a;
+}
+
+.primary-button:hover {
+  background: #307c68;
+}
+
+.run-button {
+  border-color: #c39443;
+  background: #7b571f;
+}
+
+.run-button:hover {
+  background: #916826;
+}
+
+.secondary-button {
+  background: #414141;
+}
+
+.interval-grid,
+.action-grid {
+  margin-top: 5px;
+}
+
+.interval-grid button,
+.action-grid button {
+  margin-top: 5px;
+}
+
+.interval-grid button:first-child,
+.action-grid button:first-child {
+  margin-top: 0;
+}
+
+.interval-button[data-selected="true"] {
+  border-color: #76d6bd;
+  background: #245f51;
+  color: #eafff9;
+}
+
+.status-list {
+  margin-top: 4px;
+}
+
+.status-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 2px 0;
+  border-bottom: 1px solid #444;
+}
+
+.status-row:last-child {
+  border-bottom: 0;
+}
+
+.status-label {
+  flex: 0 0 58px;
+  margin-right: 6px;
+  color: #9d9d9d;
+  font-size: 9px;
+}
+
+.status-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #e0e0e0;
+  font-size: 9px;
+  line-height: 12px;
+}
+
+.status-value[data-tone="success"],
+.message[data-tone="success"] {
+  color: #76d6bd;
+}
+
+.status-value[data-tone="warn"],
+.message[data-tone="warn"] {
+  color: #efbd62;
+}
+
+.status-value[data-tone="error"],
+.message[data-tone="error"] {
+  color: #ff8a80;
+}
+
+.message {
+  min-height: 14px;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none !important;
+}

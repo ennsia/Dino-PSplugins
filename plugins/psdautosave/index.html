@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main id="pluginRoot" class="panel">
+      <header class="panel-header">
+        <div>
+          <div class="eyebrow">SAVE AS COPY</div>
+          <h1>psdautosave</h1>
+        </div>
+        <div class="header-status">
+          <div id="enabledBadge" class="status-badge">未启用</div>
+          <div id="elapsedTime" class="runtime-pill">未开始</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-heading">
+          <h2>备份目录</h2>
+          <button id="chooseFolder" class="secondary-button" type="button">选择备份目录</button>
+        </div>
+        <div id="folderPath" class="path-text">未选择</div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <h2>备份目标</h2>
+          <button id="bindTarget" class="secondary-button" type="button">绑定当前文件</button>
+        </div>
+        <div id="targetName" class="path-text">未绑定</div>
+      </section>
+
+      <section class="section">
+        <h2>备份间隔</h2>
+        <div class="interval-grid" role="group" aria-label="备份间隔">
+          <button class="interval-button" type="button" data-interval="30">30 分钟</button>
+          <button class="interval-button" type="button" data-interval="60">1 小时</button>
+          <button class="interval-button" type="button" data-interval="120">2 小时</button>
+          <button class="interval-button" type="button" data-interval="manual">仅手动</button>
+        </div>
+        <div id="intervalLabel" class="meta-text">当前：仅手动</div>
+      </section>
+
+      <section class="section">
+        <h2>操作</h2>
+        <div class="action-grid">
+          <button id="backupNow" class="primary-button" type="button">立即备份</button>
+          <button id="startAutoBackup" class="run-button" type="button">启用自动备份</button>
+          <button id="stopAutoBackup" class="secondary-button" type="button">停止自动备份</button>
+        </div>
+      </section>
+
+      <section class="section status-section">
+        <h2>状态</h2>
+        <div class="status-list">
+          <div class="status-row">
+            <div class="status-label">当前状态</div>
+            <div id="currentStatus" class="status-value">未启用</div>
+          </div>
+          <div class="status-row">
+            <div class="status-label">最近一次备份</div>
+            <div id="lastBackup" class="status-value">尚无</div>
+          </div>
+          <div id="errorRow" class="status-row hidden">
+            <div class="status-label">错误信息</div>
+            <div id="lastError" class="status-value"></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="message" class="message">请选择备份目录，然后点击立即备份或启用自动备份。</div>
+    </main>
+
+    <script src="src/core.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
