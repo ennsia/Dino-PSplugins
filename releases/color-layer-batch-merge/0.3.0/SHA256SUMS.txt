@@ -1,0 +1,2 @@
+ebd90953cacd7eae7a146f89b4e5e691e322c2b245fb786b6444c9f5dc37013e  Dino-color-layer-batch-merge_PS.ccx
+0347174dc200893c3751e72578031d2fb479c524c45f45c74ac72d4cf33033cf  color-layer-batch-merge-v0.3.0-offline.zip
